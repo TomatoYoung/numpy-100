@@ -53,7 +53,7 @@ z = np.random.random((3,3,3))
 # 13
 z = np.random.random((10,10))
 zmax, zmin = z.max(),z.min()
-print(zmax, zmin)
+# print(zmax, zmin)
 
 # 14
 z = np.random.random(30)
@@ -97,7 +97,7 @@ z[::2,1::2] = 1
 # print(z)
 
 # 20
-print(np.unravel_index(99,(6,7,8)))
+# print(np.unravel_index(99,(6,7,8)))
 # 创建一个形状为 (6, 7, 8) 的三维数组
 arr1 = np.arange(6*7*8).reshape(6, 7, 8)
 # print("Array shape:", arr1)
@@ -115,7 +115,7 @@ z = np.tile(np.array([[0,1],[1,0]]),(4,4))
 # 答案给出的提示公式是标准化(Standardization)的公式
 z = np.random.random((5,5))
 z = (z-np.mean(z))/np.std(z)
-print(z)
+# print(z)
 
 # 23
 color = np.dtype([("r", np.ubyte),
@@ -140,6 +140,30 @@ z = np.ones((5,3)) @ np.ones((3,2))
 
 # 25
 z = np.arange(1,11)
-print(z)
+# print(z)
 z[ (z>3) & (z<8)] *= -1 # 这个括号要带着
-print(z)
+# print(z)
+
+# 26
+print(sum(range(5),-1)) # =9，-1为初始值
+from numpy import *
+print(sum(range(5),-1)) # =10，-1为求和方向axis的值
+
+# 27 Consider an integer vector Z, which of these expressions are legal? (★☆☆)
+# Z**Z 合法，每个元素进行自身幂运算，例如5**5，5的5次方
+# 2 << Z >> 2 
+# Z <- Z
+# 1j*Z
+# Z/1/1
+# Z<Z>Z
+z = np.arange(6).reshape(2,3)
+# print(z)
+# print(z**z)
+# print(2<<z) # 将整数2左移z中每个元素的位数
+# print(2 << z >> 2) # 将整数2左移z中每个元素的位数,然后每个元素再右移两位（z>>2表示每个元素右移两位）
+
+# 28
+print(np.array(0) / np.array(0)) # 在NumPy中，除以零会导致NaN或者无穷大Inf，但对于 0 / 0，结果是NaN。
+print(np.array(0) // np.array(0)) # gpt说会异常终止，但是没有，结果是0，有警告
+
+# 
