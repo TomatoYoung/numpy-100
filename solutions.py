@@ -166,4 +166,36 @@ z = np.arange(6).reshape(2,3)
 print(np.array(0) / np.array(0)) # 在NumPy中，除以零会导致NaN或者无穷大Inf，但对于 0 / 0，结果是NaN。
 print(np.array(0) // np.array(0)) # gpt说会异常终止，但是没有，结果是0，有警告
 
-# 
+# 29 让数组中每个浮点数“远离”0
+z = np.random.uniform(-10,+10,10) # 生成一个包含10个元素的随机数组，这些元素均匀分布在区间[-10, 10)内
+# print(z)
+# z = np.where(z>0,np.ceil(z),np.floor(z))
+# 效率更高的做法
+z = np.copysign(np.ceil(np.abs(z)),z)
+# print(z)
+
+# 30
+Z1 = np.random.randint(0,10,10)
+Z2 = np.random.randint(0,10,10)
+# print(Z1)
+# print(Z2)
+# print(np.intersect1d(Z1,Z2))
+
+# 31
+# defaults = np.seterr(all='ignore')
+# # print(type(np.ones(1)))
+# print(np.ones(1)/0)
+# _ = np.seterr(**defaults)
+# print(np.ones(1)/0)
+# with np.errstate(all='ignore'):
+#     print(np.ones(1)/0)
+# print(np.ones(1)/0)
+
+# 32
+print(np.sqrt(-1) == np.emath.sqrt(-1)) # sqrt求平方根
+
+# 33
+yesterday = np.datetime64('today') - np.timedelta64(1)
+today = np.datetime64('today')
+tomorrow = np.datetime64('today') + np.timedelta64(1)
+print(yesterday,today,tomorrow) 
